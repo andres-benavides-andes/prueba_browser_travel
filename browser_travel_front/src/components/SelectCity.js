@@ -55,7 +55,7 @@ class SelectCity extends React.Component {
 
   saveHistory = async () => {
     let params = {};
-    if (this.state.showAll == false) {
+    if (this.state.showAll === false) {
       let current = {
         city_id: this.state.currentCity.id,
         humidity: this.state.currentCity.humidity,

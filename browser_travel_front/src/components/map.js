@@ -50,7 +50,7 @@ class Map extends Component {
       zoom = 3;
     }
 
-    if (this.props.humidity != "" && this.props.showAll===false) {
+    if (this.props.humidity !== "" && this.props.showAll===false) {
       info_window = (
         <InfoWindow position={position}>
           <div style={divStyle}>

@@ -7,7 +7,7 @@ export const saveHistory = async (params) => {
     .post(`${API_URL}/historic`,params)
     .then(( data ) => {
       let save = false
-      if (data.status==201){
+      if (data.status===201){
         save = true
       }
       return save;
