@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+  server:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - 81:80
+    networks:
+      - app-network
+    volumes:
+      - ./browser_travel_back/:/var/www
+      - ./browser_travel_back/nginx/conf.d/:/etc/nginx/conf.d/
+
+  app:
+    build:
+      context: "./browser_travel_back/."
+      dockerfile: Dockerfile
+    user: "1000:1000"
+    env_file:
+      - ./browser_travel_back/.env
+    restart: unless-stopped
+    networks:
+      - app-network
+    volumes:
+      - ./browser_travel_back/:/var/www
+ 
+
+  db:
+    image: postgres:11.11
+    restart: unless-stopped
+    env_file:
+      - ./browser_travel_back/.env
+    environment:
+      POSTGRES_DATABASE: $DB_DATABASE
+      POSTGRES_PASSWORD: $DB_PASSWORD
+    networks:
+      - app-network
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+      - ./sql/create_data_base.sql:/docker-entrypoint-initdb.d/create_data_base.sql
+    ports:
+    - 5437:5432
+  
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
