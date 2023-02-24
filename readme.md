@@ -1,8 +1,4 @@
-Este proyecto está dividido en dos partes, el Back-End y el Front-End. La parte del back-end que se encuentra en la carpeta browser_travel_back,  se levanta como un proyecto normal de Laravel. Está funcionando con una base de datos en PostgreSql llamada browser, luego de crear la base de datos se pueden ejecutar las migraciones que crean las tablas necesarias para el funcionamiento del proyecto: 
-```
-php artisan migrate –seed 
-```
-Una vez ejecutadas las migraciones se puede levantar el servicio normal de laravel. 
+Este proyecto está dividido en dos partes, el Back-End y el Front-End. La parte del back-end que se encuentra en la carpeta browser_travel_back,  se levanta como un proyecto normal de Laravel. Está funcionando con una base de datos en PostgreSql llamada browser, se puede levantar el servicio normal de laravel. 
 ```
 php artisan serve 
 ```
